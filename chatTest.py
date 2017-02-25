@@ -51,7 +51,7 @@ password=2
 
 #-------------- add friend----------------
 # name="zaienab"
-# userID=db.users.find({"name":name},{"_id":1})
+# userID=db.users.find_one({"name":name},{"_id":1})
 # print(userID)
 # for key, val in userID.items():
 #         #print(val)
@@ -61,18 +61,30 @@ password=2
 #                    {"$push":{"friends":val}}
 #                 )
 #--------------------add group------------------
-id=1
-name="openSource"
-owner="aya"
-img="img"
-desc="just description"
-addGroup = db.groups.insert_one(
-{
-        "_id":id,
-        "name": name,
-        "owner":owner,
-        "members":[],
-        "img":"img",
-        "description":desc
-}
-)
+# id=1
+# name="openSource"
+# owner="aya"
+# img="img"
+# desc="just description"
+# addGroup = db.groups.insert_one(
+# {
+#         "_id":id,
+#         "name": name,
+#         "owner":owner,
+#         "members":[],
+#         "img":"img",
+#         "description":desc
+# }
+# )
+#-------------- join group----------------
+# groupName="openSource"
+# groupID=db.groups.find_one({"name":groupName},{"_id":1})
+# print(groupID)
+# for key, val in groupID.items():
+#         #print(val)
+#         userID=1
+#         db.groups.update(
+#                    {"_id":val},
+#                    {"$push":{"members":userID}}
+#                 )
+
