@@ -1,3 +1,4 @@
+
 from pymongo import MongoClient
 from datetime import datetime
 client = MongoClient('localhost', 27018)
@@ -88,3 +89,25 @@ password=2
 #                    {"$push":{"members":userID}}
 #                 )
 
+#---------------------remove friend-----------------------
+# name="zaienab"
+# userID=db.users.find_one({"name":name},{"_id":1})
+# print(userID)
+# for key, val in userID.items():
+#         #print(val)
+#         id=1
+#         db.users.update(
+#                    {"_id":id},
+#                    {"$pull":{"friends":val}}
+#                 )
+#-------------------leave group----------------------
+# groupName="openSource"
+# groupID=db.groups.find_one({"name":groupName},{"_id":1})
+# print(groupID)
+# for key, val in groupID.items():
+#         #print(val)
+#         userID=1
+#         db.groups.update(
+#                    {"_id":val},
+#                    {"$pull":{"members":userID}}
+#                 )
