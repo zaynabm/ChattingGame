@@ -50,8 +50,8 @@ password=2
 #          print("Right user")
 
 
-#-------------- add friend----------------
-# name="asmaa"
+#-------------- accept user (add friend)---------------
+# name="zaienab"
 # userID=db.users.find_one({"name":name},{"_id":1})
 # print(userID)
 # for key, val in userID.items():
@@ -60,6 +60,10 @@ password=2
 #         db.users.update(
 #                    {"_id":id},
 #                    {"$push":{"friends":val}}
+#                 )
+#         db.users.update(
+#                    {"_id":val},
+#                    {"$push":{"friends":id}}
 #                 )
 #-----------------------find my friends----------------------
 # userName="aya"
@@ -75,6 +79,9 @@ password=2
 #          myFriendsNames.append(val)
 # for val in myFriendsNames:
 #           print(val)
+#-----------------------all users----------------------
+# userName="zaienab"
+# myFriendsIDs=db.users.find_one({"name":userName},{"_id":0,"friends":1})
 
 #---------------------remove friend-----------------------
 # name="zaienab"
