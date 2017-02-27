@@ -1,4 +1,3 @@
-
 from pymongo import MongoClient
 from datetime import datetime
 client = MongoClient('localhost', 27018)
@@ -104,7 +103,7 @@ password=2
 # for key, val in myFriendsIDs.items():
 #         #  print (val)
 #          myFriends.append(val)
-# allUsersIDs=db.allusers.find({})
+# allUsersIDs=db.users.find({},{"_id":1})
 # for   val in allUsersIDs:
 #         #  print(val['_id'])
 #          allUsers.append(val['_id'])
@@ -128,11 +127,17 @@ password=2
 # print(userID)
 # for key, val in userID.items():
 #         #print(val)
-#         id=1
+#         id=1 # to be changed
 #         db.users.update(
 #                    {"_id":id},
 #                    {"$pull":{"friends":val}}
 #                 )
+#         db.users.update(
+#                            {"name":"zaienab"},
+#                            {"$pull":{"friends":id}}
+#                         )
+#
+
 #--------------------add group------------------
 # id=1
 # name="openSource"
@@ -173,11 +178,11 @@ password=2
 #         userID=2
 #         db.groups.update(
 #                    {"_id":val},
-#                    {"$pull":{"members":userID}}
+#                    {"$push":{"members":userID}}
 #                 )
 #         db.users.update(
 #                    {"_id":userID},
-#                    {"$pull":{"Groups":val}}
+#                    {"$push":{"Groups":val}}
 #                 )
 #-------------------find my groups----------------------
 # userName="zaienab"
@@ -193,3 +198,33 @@ password=2
 #          myGroupsNames.append(val)
 # for val in myGroupsNames:
 #           print(val)
+#-----------------------all groups----------------------
+# userName="zaienab"
+# myGroupsIDs=db.users.find_one({"name":userName},{"_id":0,"Groups":1})
+# myGroupsVal=[]
+# myGroups=[]
+# allGroups=[]
+# notGroupsID=[]
+# notGroupsNames=[]
+#
+# for key, myGroups in myGroupsIDs.items():
+#         print ("val")
+#         #  myGroups.append(val)
+#
+# allGroupsIDs=db.groups.find({})
+# for   val in allGroupsIDs:
+#         #  print("sss",val['_id'])
+#          allGroups.append(val['_id'])
+# for elem in allGroups:
+#    # if elem == myID:
+#    #     continue
+#    if elem not in myGroups:
+#          print (elem)# prints users thats is not my friends ids
+#          notGroupsID.append(elem)
+# for val in notGroupsID:
+#     myGroupsObjects=db.groups.find_one({"_id":val},{"name":1,"_id":0})
+#     print(myGroupsObjects)
+#     for  key, val in myGroupsObjects.items():
+#         print(val)
+#         notGroupsNames.append(val)
+
