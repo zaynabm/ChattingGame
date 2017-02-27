@@ -5,12 +5,13 @@ client = MongoClient('localhost', 27018)
 db = client.chatDB
 collection=db['users']
 groupCollection=db['groups']
+usersCollection=db['allusers']
 # result = db.createCollection("users")
 
 name="asmaa"
 email="a@yahoo.com"
 age=22
-id=2
+id=3
 password=2
 #-------------add user (sign up)----------------
 # addUser = db.users.insert_one(
@@ -26,6 +27,13 @@ password=2
 #         "notification":[]
 # }
 # )
+# allUsers = db.allusers.insert_one(
+# {
+#    "_id":id,
+# }
+# )
+
+
 #-----------------sign in-----------------
 # db.users.update({"_id":3},
 #                           {"$set" : {"password":3}})
@@ -82,6 +90,37 @@ password=2
 #-----------------------all users----------------------
 # userName="zaienab"
 # myFriendsIDs=db.users.find_one({"name":userName},{"_id":0,"friends":1})
+# myFriendsVal=[]
+# myFriends=[]
+# allUsers=[]
+# notFriendsID=[]
+# notFriendsNames=[]
+#
+# myIDObj=db.users.find_one({"name":userName},{"_id":1})
+# myID=myIDObj['_id']
+# print(myID)
+# for key, myFriendsVal in myFriendsIDs.items():
+#          print(myFriendsVal)
+# for key, val in myFriendsIDs.items():
+#         #  print (val)
+#          myFriends.append(val)
+# allUsersIDs=db.allusers.find({})
+# for   val in allUsersIDs:
+#         #  print(val['_id'])
+#          allUsers.append(val['_id'])
+# for elem in allUsers:
+#    if elem == myID:
+#        continue
+#    if elem not in myFriendsVal:
+#          print (elem)# prints users thats is not my friends ids
+#          notFriendsID.append(elem)
+# for val in notFriendsID:
+#     myFriendsObjects=db.users.find_one({"_id":val},{"name":1,"_id":0})
+#     print(myFriendsObjects)
+#     for  key, val in myFriendsObjects.items():
+#         print(val)
+#         notFriendsNames.append(val)
+
 
 #---------------------remove friend-----------------------
 # name="zaienab"
