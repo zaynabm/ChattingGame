@@ -13,29 +13,33 @@ age=22
 id=3
 password=2
 #-------------add user (sign up)----------------
-# addUser = db.users.insert_one(
-# {
-#         "_id":id,
-#         "name": name,
-#         "password":password,
-#         "age": age,
-#         "email":email,
-#         "friends": [],
-#         "Groups":[],
-#         "img":"img",
-#         "notification":[]
-# }
-# )
-# allUsers = db.allusers.insert_one(
-# {
-#    "_id":id,
-# }
-# )
 
+userObj=db.users.find_one({"name":name},{"_id":1})
+print(userObj)
+if (userObj is None):
+
+    addUser = db.users.insert_one(
+    {
+            "_id":id,
+            "name": name,
+            "password":password,
+            "age": age,
+            "email":email,
+            "friends": [],
+            "Groups":[],
+            "img":"img",
+            "notification":[]
+    }
+    )
+    allUsers = db.allusers.insert_one(
+    {
+       "_id":id,
+    }
+    )
+else:
+    print("User already exists")
 
 #-----------------sign in-----------------
-# db.users.update({"_id":3},
-#                           {"$set" : {"password":3}})
 # name="aya"
 # flag="false"
 # userID=db.users.find_one({"name":name},{"_id":1})# 1 for true to get id only
@@ -227,4 +231,4 @@ password=2
 #     for  key, val in myGroupsObjects.items():
 #         print(val)
 #         notGroupsNames.append(val)
-
+   
